@@ -3,24 +3,38 @@ import { Fragment, useState } from "react";
 import { useForm } from "react-hook-form";
 import { TbFidgetSpinner } from "react-icons/tb";
 import useAuth from "../../hooks/UseAuth";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
+import toast from "react-hot-toast";
 const CreateModal = ({ closeModal, isOpen }) => {
   const [loading, setLoading] = useState(false);
   const { user } = useAuth();
+  const axiosSecure = useAxiosSecure();
   const {
     register,
     handleSubmit,
-
+    reset,
     formState: { errors },
   } = useForm();
-  const onSubmit = (data) => {
+  const onSubmit = async (res) => {
     setLoading(true);
+    const toastId = toast.loading("Task Adding...");
     const task = {
-      title: data?.title,
-      descriptions: data?.descriptions || "no-descriptions",
-      deadlines: data?.data?.deadlines || "no-deadlines",
-      priority: data?.priority,
+      title: res?.title,
+      descriptions: res?.descriptions || "no-descriptions",
+      deadlines: res?.res?.deadlines || "no-deadlines",
+      priority: res?.priority,
       email: user?.email,
+      status: "new",
     };
+
+    const { data } = await axiosSecure.post("/tasks", task);
+    if (data.insertedId) {
+      setLoading(false);
+      toast.success("Task Added successfully", {
+        id: toastId,
+      });
+      reset();
+    }
   };
   return (
     <Transition appear show={isOpen} as={Fragment}>

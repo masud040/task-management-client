@@ -4,7 +4,8 @@ import { GrLogout } from "react-icons/gr";
 import { FcSettings } from "react-icons/fc";
 import { AiOutlineBars } from "react-icons/ai";
 import MenuItem from "../MenuItem/MenuItem";
-
+import { MdAddTask } from "react-icons/md";
+import { FaTasks } from "react-icons/fa";
 const Sidebar = () => {
   const [isActive, setActive] = useState(false);
 
@@ -42,11 +43,22 @@ const Sidebar = () => {
           </div>
 
           {/* Nav Items */}
-          <div className="flex flex-col justify-between flex-1 mt-6">
+          <div className="flex flex-col justify-between flex-1 mt-8">
             {/* If a user is host */}
 
             <nav>
-              <MenuItem icon={FcSettings} label="ToDo" address="/dashboard" />
+              <MenuItem
+                icon={MdAddTask}
+                label="Manage Task"
+                address="/dashboard"
+              />
+            </nav>
+            <nav>
+              <MenuItem
+                icon={FaTasks}
+                label="See All Task"
+                address="/dashboard/all-tasks"
+              />
             </nav>
           </div>
         </div>
