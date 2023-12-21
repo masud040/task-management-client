@@ -5,7 +5,7 @@ import { TbFidgetSpinner } from "react-icons/tb";
 import useAuth from "../../hooks/UseAuth";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import toast from "react-hot-toast";
-const CreateModal = ({ closeModal, isOpen }) => {
+const CreateModal = ({ closeModal, refetch, isOpen }) => {
   const [loading, setLoading] = useState(false);
   const { user } = useAuth();
   const axiosSecure = useAxiosSecure();
@@ -20,8 +20,8 @@ const CreateModal = ({ closeModal, isOpen }) => {
     const toastId = toast.loading("Task Adding...");
     const task = {
       title: res?.title,
-      descriptions: res?.descriptions || "no-descriptions",
-      deadlines: res?.res?.deadlines || "no-deadlines",
+      descriptions: res?.descriptions,
+      deadlines: res?.deadlines,
       priority: res?.priority,
       email: user?.email,
       status: "new",
@@ -33,7 +33,9 @@ const CreateModal = ({ closeModal, isOpen }) => {
       toast.success("Task Added successfully", {
         id: toastId,
       });
+
       reset();
+      refetch();
     }
   };
   return (
