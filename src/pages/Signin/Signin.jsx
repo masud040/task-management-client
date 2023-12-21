@@ -9,7 +9,7 @@ import { TbFidgetSpinner } from "react-icons/tb";
 import { useState } from "react";
 import toast from "react-hot-toast";
 
-import useAuth from "../../hooks/UseAuth";
+import useAuth from "../../hooks/useAuth";
 import Container from "../../components/Container/Container";
 const SignIn = () => {
   const { signIn } = useAuth();

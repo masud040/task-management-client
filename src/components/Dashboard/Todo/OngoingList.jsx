@@ -1,26 +1,12 @@
-import { useQuery } from "@tanstack/react-query";
-import useAuth from "../../../hooks/UseAuth";
-import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import List2 from "../../List/List2";
+import useGetTask from "../../../hooks/useGetTask";
 
 const OngoingList = () => {
-  const axiosSecure = useAxiosSecure();
-  const { user, loading } = useAuth();
-
-  const { data: todoList, refetch } = useQuery({
-    queryKey: ["ongoingTasks", user?.email],
-    enabled: !loading && !!user?.email,
-    queryFn: async () => {
-      const { data } = await axiosSecure.get(
-        `/tasks/${user?.email}?status=ongoing`
-      );
-      return data;
-    },
-  });
+  const { ongoingTodoList, refetch } = useGetTask();
   return (
     <div className="mt-4">
-      {todoList?.length > 0 ? (
-        todoList?.map((todo) => (
+      {ongoingTodoList?.length > 0 ? (
+        ongoingTodoList?.map((todo) => (
           <List2 key={todo._id} todo={todo} refetch={refetch} />
         ))
       ) : (

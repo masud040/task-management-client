@@ -20,7 +20,7 @@ const List2 = ({ todo, refetch }) => {
     }
   };
   return (
-    <div className="lg:grid grid-cols-3 space-y-2 bg-indigo-300 p-2 min-h-[120px] flex  ">
+    <div className="lg:grid grid-cols-3 space-y-2 bg-indigo-300 p-2 min-h-[120px] flex  justify-between ">
       <div className="col-span-2">
         <h1 className="md:text-sm lg:text-lg font-bold">{todo?.title}</h1>
         <p className="md:text-xs text-justify">{todo?.descriptions}</p>

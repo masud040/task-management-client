@@ -2,10 +2,9 @@ import { IoMdAdd } from "react-icons/io";
 
 import CreateModal from "../../Modal/CreateModal";
 import { useState } from "react";
-import { useQuery } from "@tanstack/react-query";
-import useAxiosSecure from "../../../hooks/useAxiosSecure";
-import useAuth from "../../../hooks/UseAuth";
+
 import List1 from "../../List/List1";
+import useGetTask from "../../../hooks/useGetTask";
 const TodoList = () => {
   const [isOpen, setIsOpen] = useState(false);
   const openModal = () => {
@@ -14,25 +13,14 @@ const TodoList = () => {
   const closeModal = () => {
     setIsOpen(false);
   };
-  const axiosSecure = useAxiosSecure();
-  const { user, loading } = useAuth();
 
-  const { data: todoList, refetch } = useQuery({
-    queryKey: ["newTasks", user?.email],
-    enabled: !loading && !!user?.email,
-    queryFn: async () => {
-      const { data } = await axiosSecure.get(
-        `/tasks/${user?.email}?status=new`
-      );
-      return data;
-    },
-  });
+  const { newTodoList, refetch } = useGetTask();
 
   return (
     <>
       <div className="flex flex-col gap-4 mt-4">
-        {todoList?.length > 0 ? (
-          todoList?.map((todo) => (
+        {newTodoList?.length > 0 ? (
+          newTodoList?.map((todo) => (
             <List1 key={todo._id} todo={todo} refetch={refetch} />
           ))
         ) : (

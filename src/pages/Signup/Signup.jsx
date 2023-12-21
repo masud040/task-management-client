@@ -7,7 +7,7 @@ import { TbFidgetSpinner } from "react-icons/tb";
 
 import toast from "react-hot-toast";
 import { useState } from "react";
-import useAuth from "../../hooks/UseAuth";
+import useAuth from "../../hooks/useAuth";
 import { imageUpload } from "../../api/auth";
 import Container from "../../components/Container/Container";
 

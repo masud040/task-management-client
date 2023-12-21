@@ -2,7 +2,7 @@ import { Dialog, Transition } from "@headlessui/react";
 import { Fragment, useState } from "react";
 import { useForm } from "react-hook-form";
 import { TbFidgetSpinner } from "react-icons/tb";
-import useAuth from "../../hooks/UseAuth";
+import useAuth from "../../hooks/useAuth";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import toast from "react-hot-toast";
 const CreateModal = ({ closeModal, refetch, isOpen }) => {
