@@ -45,7 +45,9 @@ const Sidebar = () => {
           <div className="flex flex-col justify-between flex-1 mt-6">
             {/* If a user is host */}
 
-            <nav></nav>
+            <nav>
+              <MenuItem icon={FcSettings} label="ToDo" address="/dashboard" />
+            </nav>
           </div>
         </div>
 
