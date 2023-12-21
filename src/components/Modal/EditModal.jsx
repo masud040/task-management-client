@@ -6,7 +6,7 @@ import useAuth from "../../hooks/useAuth";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import toast from "react-hot-toast";
 const EditModal = ({ closeModal, todo, refetch, isOpen }) => {
-  const { title, descriptions, deadlines, priority } = todo || {};
+  const { _id, title, descriptions, deadlines, priority } = todo || {};
   const [loading, setLoading] = useState(false);
   const { user } = useAuth();
   const axiosSecure = useAxiosSecure();
@@ -27,16 +27,16 @@ const EditModal = ({ closeModal, todo, refetch, isOpen }) => {
       email: user?.email,
     };
 
-    const { data } = await axiosSecure.patch("/tasks", task);
-    // if (data.insertedId) {
-    //   setLoading(false);
-    //   toast.success("Task Added successfully", {
-    //     id: toastId,
-    //   });
+    const { data } = await axiosSecure.patch(`/task/${_id}`, task);
 
-    reset();
-    refetch();
-    // }
+    if (data.modifiedCount > 0) {
+      setLoading(false);
+      toast.success("Task Added successfully", {
+        id: toastId,
+      });
+      reset();
+      refetch();
+    }
   };
   return (
     <Transition appear show={isOpen} as={Fragment}>
@@ -69,7 +69,7 @@ const EditModal = ({ closeModal, todo, refetch, isOpen }) => {
                   as="h3"
                   className="text-lg font-medium text-center leading-6 text-gray-900"
                 >
-                  Create a new Task
+                  Update existing task
                 </Dialog.Title>
                 <div className="mt-2 ">
                   <form onSubmit={handleSubmit(onSubmit)} className="space-y-2">

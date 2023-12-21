@@ -26,6 +26,19 @@ const List1 = ({ todo, refetch }) => {
   const closeModal = () => {
     setIsOpen(false);
   };
+  const handleDelete = async (id) => {
+    const toastId = toast.loading("Task deleting...");
+    const tasks = {
+      status: "delete",
+    };
+    const { data } = await axiosSecure.patch(`/tasks/${id}`, tasks);
+    if (data.modifiedCount > 0) {
+      toast.success("Task deleted", {
+        id: toastId,
+      });
+      refetch();
+    }
+  };
   return (
     <>
       <div className="md:grid grid-cols-3 space-y-2 bg-violet-400 p-2 min-h-[120px] flex  justify-between">
@@ -43,6 +56,7 @@ const List1 = ({ todo, refetch }) => {
             <FaEdit className="text-xl " />
           </button>
           <button
+            onClick={() => handleDelete(todo._id)}
             title="delete task"
             className="bg-red-500 p-[2px] w-max rounded-md"
           >
