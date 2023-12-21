@@ -1,14 +1,27 @@
+import TodoList from "../../components/Dashboard/Todo/TodoList";
+import OngoingList from "../../components/Dashboard/Todo/OngoingList";
+import CompleteList from "../../components/Dashboard/Todo/CompleteList";
+
 const Todo = () => {
   return (
-    <div className="grid grid-cols-3 ">
-      <div>
-        <h1 className="text-center">Todo List</h1>
+    <div className="grid grid-cols-3 gap-6">
+      <div className="bg-gray-300 h-screen rounded-md">
+        <h1 className="text-center shadow-xl p-1  bg-gray-400 text-lg font-bold rounded-md">
+          Todo List
+        </h1>
+        <TodoList />
       </div>
-      <div>
-        <h1 className="text-center">Ongoing List</h1>
+      <div className="bg-gray-300 h-screen rounded-md">
+        <h1 className="text-center shadow-xl bg-rose-400 p-1 text-lg font-bold rounded-md">
+          Ongoing List
+        </h1>
+        <OngoingList />
       </div>
-      <div>
-        <h1 className="text-center">Complete List</h1>
+      <div className="bg-gray-300 h-screen rounded-md">
+        <h1 className="text-center shadow-xl bg-pink-400 p-1 text-lg font-bold rounded-md">
+          Complete List
+        </h1>
+        <CompleteList />
       </div>
     </div>
   );
