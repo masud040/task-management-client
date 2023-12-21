@@ -98,7 +98,7 @@ const SignIn = () => {
               <div className="flex-1 h-px bg-white sm:w-16 dark:bg-gray-700"></div>
             </div>
 
-            <Social />
+            <Social state={state} />
             <p className="px-6 text-sm text-center ">
               Don&apos;t have an account yet?{" "}
               <Link

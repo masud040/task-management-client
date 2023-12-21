@@ -6,13 +6,13 @@ import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 const googleProvider = new GoogleAuthProvider();
 const githubProvider = new GithubAuthProvider();
-const Social = () => {
+const Social = ({ state }) => {
   const navigate = useNavigate();
   const { signInWithSocial } = useAuth();
   const handleSocialLogin = async (provider) => {
     await signInWithSocial(provider);
     toast.success("Login successful");
-    navigate("/");
+    navigate(state ? state : "/");
   };
   return (
     <div>
