@@ -20,10 +20,10 @@ const List3 = ({ todo, refetch }) => {
   };
 
   return (
-    <div className="lg:grid grid-cols-3 space-y-2 bg-indigo-300 p-2 min-h-[120px] flex  ">
+    <div className="lg:grid grid-cols-3 space-y-2 bg-violet-300 p-2 min-h-[120px] flex  ">
       <div className="col-span-2">
-        <h1 className="text-sm lg:text-lg font-bold">{todo?.title}</h1>
-        <p className="text-xs text-justify">{todo?.descriptions}</p>
+        <h1 className="md:text-lg font-bold">{todo?.title}</h1>
+        <p className="md:text-xs text-justify">{todo?.descriptions}</p>
         <p>{todo?.deadlines}</p>
       </div>
       <div className="flex flex-1 flex-col items-end gap-2">

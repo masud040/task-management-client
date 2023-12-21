@@ -6,6 +6,7 @@ import { AiOutlineBars } from "react-icons/ai";
 import MenuItem from "../MenuItem/MenuItem";
 import { MdAddTask } from "react-icons/md";
 import { FaTasks } from "react-icons/fa";
+import { Link } from "react-router-dom";
 const Sidebar = () => {
   const [isActive, setActive] = useState(false);
 
@@ -16,10 +17,8 @@ const Sidebar = () => {
     <>
       {/* Small Screen Navbar */}
       <div className="bg-gray-100 text-gray-800 flex justify-between md:hidden">
-        <div>
-          <div className="block cursor-pointer p-4 font-bold">
-            <h1>Task Manager</h1>
-          </div>
+        <div className="block cursor-pointer p-4 font-bold">
+          <Link to="/">Task Manager</Link>
         </div>
 
         <button
@@ -38,7 +37,7 @@ const Sidebar = () => {
         <div>
           <div>
             <div className="w-full hidden md:flex px-4 py-2 shadow-lg rounded-lg justify-center items-center bg-rose-100 mx-auto">
-              <h1>Task Manager</h1>
+              <Link to="/">Task Manager</Link>
             </div>
           </div>
 
@@ -57,7 +56,7 @@ const Sidebar = () => {
               <MenuItem
                 icon={FaTasks}
                 label="See All Task"
-                address="/dashboard/all-tasks"
+                address="/dashboard/all-task"
               />
             </nav>
           </div>

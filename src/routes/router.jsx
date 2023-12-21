@@ -8,6 +8,7 @@ import DashboardLayout from "../layouts/DashboardLayout";
 import Todo from "../pages/Todo/Todo";
 import Profile from "../pages/Profile/Profile";
 import PrivateRoute from "./PrivateRoute";
+import AllTask from "../pages/AllTask/AllTask";
 
 const router = createBrowserRouter([
   {
@@ -43,6 +44,14 @@ const router = createBrowserRouter([
         element: (
           <PrivateRoute>
             <Todo />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "all-task",
+        element: (
+          <PrivateRoute>
+            <AllTask />
           </PrivateRoute>
         ),
       },

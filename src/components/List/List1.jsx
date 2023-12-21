@@ -22,8 +22,8 @@ const List1 = ({ todo, refetch }) => {
   return (
     <div className="md:grid grid-cols-3 space-y-2 bg-violet-400 p-2 min-h-[120px] flex  justify-between">
       <div className="col-span-2">
-        <h1 className="text-sm lg:text-lg font-bold">{todo?.title}</h1>
-        <p className="text-sm md:text-xs text-justify">{todo?.descriptions}</p>
+        <h1 className=" md:text-lg font-bold">{todo?.title}</h1>
+        <p className=" md:text-xs text-justify">{todo?.descriptions}</p>
         <p>{todo?.deadlines}</p>
       </div>
       <div className="flex flex-1 flex-col items-end gap-2">
