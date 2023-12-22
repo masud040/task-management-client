@@ -1,12 +1,13 @@
 import UserBenefit from "../../components/Home/UserBenefit";
 import Banner from "../../components/Home/Banner";
+import Container from "../../components/Container/Container";
 
 const Home = () => {
   return (
-    <div>
+    <Container>
       <Banner />
       <UserBenefit />
-    </div>
+    </Container>
   );
 };
 
