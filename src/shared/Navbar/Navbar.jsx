@@ -13,7 +13,7 @@ const Navbar = () => {
       <NavLink
         to="/"
         className={({ isActive, isPending }) =>
-          isPending ? "pending" : isActive ? "active" : ""
+          isPending ? "pending" : isActive ? "text-rose-500" : " "
         }
       >
         Home
@@ -21,17 +21,18 @@ const Navbar = () => {
       <NavLink
         to="/help"
         className={({ isActive, isPending }) =>
-          isPending ? "pending" : isActive ? "active" : ""
+          isPending ? "pending" : isActive ? "text-rose-500" : ""
         }
       >
         Help/Support
       </NavLink>
+
       {user && <button onClick={handleLogOut}>LogOut</button>}
       {!user && (
         <NavLink
           to="/signin"
           className={({ isActive, isPending }) =>
-            isPending ? "pending" : isActive ? "active" : ""
+            isPending ? "pending" : isActive ? "text-rose-500" : ""
           }
         >
           Login

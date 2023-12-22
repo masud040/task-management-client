@@ -5,6 +5,7 @@ import useAxiosSecure from "../../hooks/useAxiosSecure";
 import toast from "react-hot-toast";
 import EditModal from "../Modal/EditModal";
 import { useState } from "react";
+import Swal from "sweetalert2";
 const List1 = ({ todo, refetch }) => {
   const axiosSecure = useAxiosSecure();
   const [isOpen, setIsOpen] = useState(false);
@@ -26,18 +27,30 @@ const List1 = ({ todo, refetch }) => {
   const closeModal = () => {
     setIsOpen(false);
   };
-  const handleDelete = async (id) => {
-    const toastId = toast.loading("Task deleting...");
-    const tasks = {
-      status: "delete",
-    };
-    const { data } = await axiosSecure.patch(`/tasks/${id}`, tasks);
-    if (data.modifiedCount > 0) {
-      toast.success("Task deleted", {
-        id: toastId,
-      });
-      refetch();
-    }
+  const handleDelete = (id) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        const toastId = toast.loading("Task deleting...");
+        const tasks = {
+          status: "delete",
+        };
+        const { data } = await axiosSecure.patch(`/tasks/${id}`, tasks);
+        if (data.modifiedCount > 0) {
+          toast.success("Task deleted", {
+            id: toastId,
+          });
+          refetch();
+        }
+      }
+    });
   };
   return (
     <>
