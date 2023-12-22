@@ -9,6 +9,7 @@ import Todo from "../pages/Todo/Todo";
 import Profile from "../pages/Profile/Profile";
 import PrivateRoute from "./PrivateRoute";
 import AllTask from "../pages/AllTask/AllTask";
+import Help from "../pages/Help/Help";
 
 const router = createBrowserRouter([
   {
@@ -19,6 +20,10 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <Home />,
+      },
+      {
+        path: "help",
+        element: <Help />,
       },
     ],
   },
