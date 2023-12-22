@@ -25,7 +25,6 @@ const SignUp = () => {
     const password = form.password.value;
     const { data } = await imageUpload(image);
     const url = data?.url;
-    console.log(url);
 
     const { user } = await createUser(email, password);
     await updateUserProfile(name, url);
